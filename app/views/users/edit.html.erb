@@ -1,0 +1,14 @@
+<h1><%= t('users.edit')%></h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial=>"user_fields", :locals=>{:f=>f}%>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

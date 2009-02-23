@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @workshop.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @workshop.description %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%=h @workshop.date %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%=h @workshop.topic %>
+</p>
+
+
+<%= link_to 'Edit', edit_workshop_path(@workshop) %> |
+<%= link_to 'Back', workshops_path %>

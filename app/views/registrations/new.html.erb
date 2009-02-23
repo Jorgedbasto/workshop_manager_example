@@ -1,0 +1,15 @@
+<h1>New registration</h1>
+
+<% form_for [@workshop, @registration] do |f| %>
+  
+ <%= error_messages_for :registration %>
+ <%= error_messages_for :user %>
+
+  <%= render :partial=>"registration_fields", :locals=>{:f=>f}%>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', workshop_registrations_path(@workshop) %>

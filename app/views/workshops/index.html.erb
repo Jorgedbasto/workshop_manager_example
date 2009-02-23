@@ -1,0 +1,38 @@
+<% content_for :foot do %>
+	<br/>
+	<p><small>Footer just for workshop page.
+	<%= link_to_function "More (link_to_function example)", "$('explanation').toggle().highlight();" %>
+	</small></p>
+
+	<div id="explanation" style="display:none;">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	<br/><br/>
+	</div>
+<%end%>
+
+<h2>Workshops</h2>
+ 
+<table>
+  <tr class="headtable">
+    <th>Name</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>Topic</th>
+  </tr>
+
+<% for workshop in @workshops %>
+  <tr class="<%= cycle("rowlight", "rowdark") -%>" id="workshop_<%= workshop.id -%>">
+    <td><%= workshop.name -%></td>
+    <td><%= workshop.description -%></td>
+    <td><%= data_pt_helper workshop.date -%></td>
+    <td><%= workshop.topic -%></td>
+    <td><%= link_to 'Registrations', workshop_registrations_path(workshop) %></td>
+    <td><%= link_to 'Show', workshop %></td>
+    <td><%= link_to 'Edit', edit_workshop_path(workshop) %></td>
+	<td><%=	link_to_remote "Destroy (AJAX)", :url => workshop_path(workshop), :confirm => "Are you sure?", :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+<%= link_to 'New workshop', new_workshop_path %>

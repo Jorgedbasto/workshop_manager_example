@@ -1,0 +1,18 @@
+<p>
+  <%= f.label :confirmed %><br />
+  <%= f.check_box :confirmed %>
+</p>
+
+<p id="select_user">
+  <%= f.label :user, "Pessoa" %><br />
+  <%= f.collection_select :user , User.find(:all), :id, :name, :prompt => 'Escolha uma pessoa' %>
+	<% #registrations_helper %>
+	<%= create_new_user_helper(params[:action]) %>
+</p>
+
+<div id="new_user" style="display:none;">
+	<h3>New User</h3>
+	<% fields_for @user  do |form_user| %>
+		<%= render :partial=>"/users/user_fields", :locals=>{:f=>form_user} %>
+	<%end%>	
+</div>

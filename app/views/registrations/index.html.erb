@@ -1,0 +1,27 @@
+<h2>Registrations for <%= @workshop.name -%></h2>
+ 
+<table>
+  <tr class="headtable">
+    <th>Name</th>
+    <th>BI</th>
+    <th>Registration Date</th>
+    <th>Confirmed</th>
+  </tr>
+<% for registration in @registrations %>
+  <tr class="<%= cycle("rowlight", "rowdark") -%>">
+    <td><%= registration.user.name -%></td>
+    <td><%= registration.user.bi -%></td>
+    <td><%= data_pt_helper registration.created_at -%></td>
+    <td><%= human_confirmation_helper registration.confirmed -%></td>
+
+    <td><%= link_to 'Show', workshop_registration_path(@workshop, registration) %></td>
+    <td><%= link_to 'Edit', edit_workshop_registration_path(@workshop, registration) %></td>
+    <td><%= link_to 'Destroy', [@workshop, registration], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/><br/>
+<%= link_to 'New Registration', new_workshop_registration_path(@workshop) %>
+<br/><br/>
+<%= link_to 'Back', workshops_path %>
