@@ -38,11 +38,11 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(params[:registration])
   
-    @user = @registration.build_user(params[:user]) if @registration.user_id.nil?
+    @registration.user_id  = @registration.build_user(params[:user]) if @registration.user_id.nil?
     @workshop.registrations << @registration
     
     respond_to do |format|
-      if @registration.user.valid? && @registration.save
+      if @registration.save
         flash[:notice] = 'Registration was successfully created.'
         format.html { redirect_to workshop_registrations_path(@workshop) }
         format.xml  { render :xml => @registration, :status => :created, :location => @registration }
@@ -81,7 +81,7 @@ class RegistrationsController < ApplicationController
     end
   end
 
-
+  #DRY up the code by always loading workshop
   def load_workshop
     @workshop = Workshop.find(params[:workshop_id])
   end

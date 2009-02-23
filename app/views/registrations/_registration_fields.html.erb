@@ -5,8 +5,8 @@
 
 <p id="select_user">
   <%= f.label :user, "Pessoa" %><br />
-  <%= f.collection_select :user , User.find(:all), :id, :name, :prompt => 'Escolha uma pessoa' %>
-	<% #registrations_helper %>
+  <%= f.collection_select :user_id , User.find(:all), :id, :name, :prompt => 'Choose a person' %>
+	<% #see registrations_helper %>
 	<%= create_new_user_helper(params[:action]) %>
 </p>
 

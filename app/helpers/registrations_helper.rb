@@ -16,6 +16,6 @@ module RegistrationsHelper
    	  #page['select_user'].hide
    	  page['new_user'].highlight
    	  page['registration_user_id'].value = nil
-     end if action=="new"
+     end if action!="edit"
    end
 end
